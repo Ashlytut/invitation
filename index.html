@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Will You Be My Valentine 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 * { box-sizing: border-box; }
@@ -12,241 +13,154 @@
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(120deg, #fff5f8, #ffe6ee, #fff0f5);
-  background-size: 300% 300%;
-  animation: bgMove 12s ease infinite;
+  background: linear-gradient(-45deg, #ffe6f0, #ffd6ec, #fff0f5, #ffeaf7);
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease infinite;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
 }
 
-/* BACKGROUND HEARTS */
-.bg-heart {
-  position: absolute;
-  font-size: 18px;
-  opacity: 0.25;
-  animation: bgFloat linear infinite;
-  pointer-events: none;
-}
-
-@keyframes bgFloat {
-  from { transform: translateY(110vh) scale(0.6); }
-  to { transform: translateY(-10vh) scale(1.2); }
-}
-
-@keyframes bgMove {
+@keyframes gradientMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-.container {
-  text-align: center;
-  background: rgba(255,255,255,0.96);
-  padding: 60px 50px;
+.box {
+  background: white;
+  padding: 40px;
   border-radius: 30px;
-  box-shadow: 0 25px 60px rgba(255,143,177,0.25);
-  animation: fadeIn 1s ease;
-  max-width: 700px;
+  text-align: center;
+  width: 360px;
+  box-shadow: 0 15px 35px rgba(255,105,180,0.2);
   position: relative;
-  z-index: 2;
+  animation: popIn 0.6s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 h1 {
   font-family: 'Great Vibes', cursive;
-  font-size: 3.4rem;
-  margin-bottom: 15px;
-  color: #ff7fa2;
+  font-size: 42px;
+  margin-bottom: 10px;
+  color: #ff4d88;
 }
 
 .subtitle {
-  font-size: 1rem;
-  margin-bottom: 15px;
-  color: #888;
-}
-
-.no-text {
-  font-size: 1rem;
-  color: #ff7fa2;
-  margin-top: 15px;
-  min-height: 24px;
-  transition: opacity 0.3s ease;
-}
-
-.photo-box {
-  width: 160px;
-  height: 160px;
-  margin: 0 auto 40px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.photo-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.buttons {
-  margin-top: 20px;
-  position: relative;
-  height: 90px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #666;
 }
 
 button {
-  padding: 12px 38px;
+  padding: 10px 20px;
   border: none;
-  border-radius: 30px;
-  font-size: 1rem;
+  border-radius: 25px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 6px;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
 button:hover {
-  transform: scale(1.08);
-  box-shadow: 0 10px 20px rgba(255,143,177,0.4);
+  transform: translateY(-3px);
 }
 
 .yes {
-  background: #ff8fb1;
+  background: #ff4d88;
   color: white;
+  box-shadow: 0 5px 15px rgba(255,77,136,0.4);
 }
 
 .no {
-  background: #e0e0e0;
-  color: #555;
-  position: absolute;
+  background: #eee;
 }
 
 .choice-btn {
-  background: #ffb6c9;
+  background: #ff85a2;
   color: white;
-  margin: 10px;
+  box-shadow: 0 5px 15px rgba(255,133,162,0.4);
 }
 
-/* Floating hearts */
 .heart {
-  position: absolute;
-  font-size: 20px;
-  animation: floatUp 2s ease forwards;
+  position: fixed;
+  color: #ff4d88;
+  animation: float 4s linear forwards;
+  font-size: 18px;
 }
 
-@keyframes floatUp {
-  from { opacity: 1; transform: translateY(0); }
-  to { opacity: 0; transform: translateY(-80px) scale(1.5); }
+@keyframes float {
+  to {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  top: -10px;
+  animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(100vh) rotate(360deg); }
+}
+
+#countdown {
+  font-size: 13px;
+  color: #ff6f9f;
+  margin-bottom: 15px;
+  font-weight: 600;
 }
 </style>
 </head>
 
 <body>
 
-<!-- STEP 1 -->
-<div class="container" id="mainBox">
-  <h1>Will you be my Valentine?</h1>
+<audio id="bgMusic" src="https://youtu.be/iGRqb8kBoz8?si=GhDPVw6NksqVP-Wm" loop></audio>
 
-  <p class="subtitle">
-    I’m Seb, and I’d love to ask you to be my Valentine this February 14
-  </p>
-
-  <div class="photo-box">
-    <img src="c:\Users\Acer\images\Downloads\76d4a33739466a3b924ed7e4eedf2f4b.jpg">
-  </div>
-
-  <div class="buttons" id="buttonArea">
-    <button class="yes" onclick="yesClick()">YES</button>
-    <button class="no" id="noBtn">NO</button>
-  </div>
-
-  <!-- NO BUTTON MESSAGE -->
-  <div class="no-text" id="noText"></div>
+<div class="box" id="mainBox">
+  <h1>Will You Be My Valentine? 💘</h1>
+  <p class="subtitle">February 14 • 7:00 PM </p>
+  <div id="countdown"></div>
+  <button class="yes" onclick="yesClick()">YES 💖</button>
+  <button class="no" onclick="noClick()">NO 😢</button>
 </div>
 
-<!-- STEP 2: COLOR -->
-<div class="container" id="colorBox" style="display:none;">
-  <h1>What color should we wear? 💑</h1>
-  <p class="subtitle">Let’s match and look cute together ✨</p>
-
-  <button class="choice-btn" onclick="chooseColor('White 🤍')">White 🤍</button>
-  <button class="choice-btn" onclick="chooseColor('Black 🖤')">Black 🖤</button>
-  <button class="choice-btn" onclick="chooseColor('Pink 💕')">Pink 💕</button>
-  <button class="choice-btn" onclick="chooseColor('Beige 🤎')">Beige 🤎</button>
-</div>
-
-<!-- STEP 3: PLACE -->
-<div class="container" id="placeBox" style="display:none;">
+<div class="box" id="placeBox" style="display:none;">
   <h1>Where should we go? 💕</h1>
-  <button class="choice-btn" onclick="choosePlace('Maestro')">Maestro</button>
-  <button class="choice-btn" onclick="choosePlace('East Cafe')">East Cafe</button>
+  <button class="choice-btn" onclick="choosePlace('Krave Cafe ')">Krave Cafe ☕</button>
+  <button class="choice-btn" onclick="choosePlace('Cafe Maestro ')">Cafe Maestro 🎶</button>
 </div>
 
-<!-- STEP 4: TIME -->
-<div class="container" id="timeBox" style="display:none;"></div>
+<div class="box" id="timeBox" style="display:none;"></div>
 
 <script>
-/* BACKGROUND HEARTS */
-for (let i = 0; i < 25; i++) {
-  const bgHeart = document.createElement("div");
-  bgHeart.className = "bg-heart";
-  bgHeart.textContent = "💗";
-  bgHeart.style.left = Math.random() * 100 + "vw";
-  bgHeart.style.animationDuration = 8 + Math.random() * 8 + "s";
-  bgHeart.style.fontSize = 12 + Math.random() * 20 + "px";
-  document.body.appendChild(bgHeart);
-}
-
-const noBtn = document.getElementById("noBtn");
-const area = document.getElementById("buttonArea");
-const noText = document.getElementById("noText");
-
-const mainBox = document.getElementById("mainBox");
-const colorBox = document.getElementById("colorBox");
+let noClicks = 0;
+let chosenPlace = "";
 const placeBox = document.getElementById("placeBox");
 const timeBox = document.getElementById("timeBox");
 
-let noClicks = 0;
-let chosenColor = "";
-let chosenPlace = "";
-
-const noMessages = [
-  "Ayaw mo ba talaga? 🥺",
-  "Sure na ba yan? 😟",
-  "Ang sakit naman 😭",
-  "Baka may ibang nag-aya sayo? 😔",
-  "Sige na please 🥹💖"
-];
-
-noBtn.addEventListener("click", () => {
-  if (noClicks < noMessages.length) {
-    noText.textContent = noMessages[noClicks];
-  } else {
-    noText.textContent = "Please… ikaw lang eh 💘";
-  }
-
-  noBtn.style.left = Math.random() * (area.clientWidth - noBtn.offsetWidth) + "px";
-  noBtn.style.top = Math.random() * (area.clientHeight - noBtn.offsetHeight) + "px";
-
-  noClicks++;
-});
-
 function yesClick() {
-  mainBox.style.display = "none";
-  colorBox.style.display = "block";
-  hearts(colorBox);
+  document.getElementById("bgMusic").play();
+  confetti();
+  document.getElementById("mainBox").style.display = "none";
+  placeBox.style.display = "block";
+  hearts();
 }
 
-function chooseColor(color) {
-  chosenColor = color;
-  colorBox.style.display = "none";
-  placeBox.style.display = "block";
-  hearts(placeBox);
+function noClick() {
+  noClicks++;
+  const yesBtn = document.querySelector(".yes");
+  yesBtn.style.transform = "scale(" + (1 + noClicks * 0.15) + ")";
 }
 
 function choosePlace(place) {
@@ -254,38 +168,73 @@ function choosePlace(place) {
   placeBox.style.display = "none";
   timeBox.style.display = "block";
   timeBox.innerHTML = `
-    <h1>What time? ⏰</h1>
-    <button class="choice-btn" onclick="chooseTime('3:00 – 5:00 PM')">3:00 – 5:00 PM</button>
-    <button class="choice-btn" onclick="chooseTime('5:00 – 8:00 PM')">5:00 – 8:00 PM</button>
+    <h1>It's a Date 💖</h1>
+    <p class="subtitle" id="finalText"></p>
   `;
+  hearts();
+
+  typeMessage(
+`Place: ${chosenPlace}
+Time: 7:00 PM 🌙
+
+I’ll pick you up at school 
+Be ready and look cute ha 
+
+See you on February 14 ✨`
+  );
 }
 
-function chooseTime(time) {
-  timeBox.innerHTML = `
-    <h1>Perfect 💖</h1>
-    <p class="subtitle">
-      Matching color: ${chosenColor}<br>
-      Place: ${chosenPlace}<br>
-      Time: ${time}<br><br>
-      See you on Feb 14 💘
-    </p>
-  `;
-  hearts(timeBox);
-}
-
-function hearts(target) {
-  for (let i = 0; i < 8; i++) {
+function hearts() {
+  for (let i = 0; i < 25; i++) {
     const heart = document.createElement("div");
     heart.className = "heart";
-    heart.textContent = "💗";
-    heart.style.left = Math.random() * 100 + "%";
-    heart.style.bottom = "0";
-    target.appendChild(heart);
-    setTimeout(() => heart.remove(), 2000);
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = "100vh";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
   }
 }
+
+function confetti() {
+  for (let i = 0; i < 60; i++) {
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.background = `hsl(${Math.random()*360},100%,60%)`;
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 4000);
+  }
+}
+
+function typeMessage(text) {
+  const el = document.getElementById("finalText");
+  let i = 0;
+  const typing = setInterval(() => {
+    if (i < text.length) {
+      el.innerHTML += text.charAt(i);
+      i++;
+    } else {
+      clearInterval(typing);
+    }
+  }, 35);
+}
+
+const countdown = document.getElementById("countdown");
+const targetDate = new Date("February 14, 2026 19:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = targetDate - now;
+
+  if (diff > 0) {
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    countdown.innerHTML = days + " days until our cute date 💕";
+  } else {
+    countdown.innerHTML = "Today is our date 💖";
+  }
+}, 1000);
 </script>
 
 </body>
 </html>
-
